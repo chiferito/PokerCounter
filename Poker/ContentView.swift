@@ -14,6 +14,8 @@ struct ContentView: View {
     @State private var playerCount = 0
     @State private var players: [String] = ["Eric"]
     @State private var nameToAdd = ""
+    @State private var newBuyin = 5
+    @State private var newBounty = 2
     
     var body: some View {
         VStack {
@@ -27,8 +29,16 @@ struct ContentView: View {
                     VStack{
                         Text("Buy-in Value:")
                             .foregroundStyle(Color.white)
-                        Text("\(buyinValue)")
+                        TextField("Buy-in value", value: $newBuyin, format: .number)
+                            .border(Color.white)
                             .foregroundStyle(Color.white)
+                            .frame(width:60)
+                            .multilineTextAlignment(.center)
+                            .onSubmit {
+                                if newBuyin>0 {
+                                    buyinValue = newBuyin
+                                }
+                            }
                     }
                 }.padding(.trailing,50)
                 ZStack{
@@ -38,8 +48,16 @@ struct ContentView: View {
                     VStack{
                         Text("Bounty Value:")
                             .foregroundStyle(Color.white)
-                        Text("\(bountyValue)")
+                        TextField("Bounty Value", value: $newBounty, format: .number)
+                            .border(Color.white)
                             .foregroundStyle(Color.white)
+                            .frame(width:60)
+                            .multilineTextAlignment(.center)
+                            .onSubmit {
+                                if newBounty>0 {
+                                    bountyValue = newBounty
+                                }
+                            }
                     }
                 }
             }

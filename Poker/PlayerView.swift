@@ -75,6 +75,12 @@ struct PlayerView: View {
     init(name: String) {
         self.name = name
     }
+    
+    init(name: String, bcount: Int, ccount: Int) {
+        self.name = name
+        self.buyinCount = bcount
+        self.chipCount = ccount
+    }
 }
 
 #Preview {
